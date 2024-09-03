@@ -1,0 +1,231 @@
+@font-face {
+  font-family: "Foldit";
+  src: url("./assets/fonts/Foldit-ExtraBold.woff");
+  src: url("./assets/fonts/Foldit-ExtraBold.woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* ===Custom Styles=== */
+/* Prevent Defaults */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Base Font Size */
+html {
+  font-size: 16px; /* Replace with your desired base font size */
+}
+/* Root */
+body {
+  font-family: "Raleway", sans-serif; /* Replace with your desired font family */
+  line-height: 1.5; /* Replace with your desired line height */
+  overflow-x: hidden; /* Adjust as necessary */
+  background-color: var(--background);
+  color: var(--textColor);
+}
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+  margin-bottom: 1rem; /* Use Tailwind spacing or custom spacing */
+}
+
+h1 {
+  font-size: 4.25rem !important;
+  font-weight: 800;
+  font-family: Foldit;
+  color: #98d90b;
+}
+h2 {
+  font-size: 1.875rem !important;
+  font-weight: 900 !important;
+}
+h3 {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+/* Paragraph Styles */
+p {
+  margin-bottom: 1rem; /* Adjust as necessary */
+}
+img {
+  object-fit: cover !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+svg {
+  font-size: 1.5rem;
+}
+a {
+  &:hover {
+    color: var(--dangerColor);
+  }
+}
+
+input:focus {
+  outline: 2px solid var(--primaryColor);
+}
+/* Create a custom checkbox */
+.checkbox {
+  position: relative;
+  /* Add a checkmark */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 8px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+}
+/* Change background color when checked */
+input[type="checkbox"]:checked + .checkbox {
+  background-color: var(--primaryColor); /* Color when checked */
+  box-shadow: 0px 4px 2px 0px var(--accentColor);
+}
+
+/* Show checkmark when checked */
+input[type="checkbox"]:checked + .checkbox::after {
+  opacity: 1;
+}
+/* ===Custom Styles=== */
+
+/* ===Classes Styles=== */
+/* SignPage */
+.bg-section {
+  background-image: url("/bg.png");
+  background-position: 50% 0%;
+  height: 100vh;
+  width: 50vw;
+  background-size: cover;
+  position: relative;
+}
+.sign-title {
+  position: absolute;
+  right: -1rem;
+  top: 12rem;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+  /* active state */
+  &.active {
+    background-color: var(--background);
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: transparent;
+      width: 2.5rem;
+      height: 2.5rem;
+      top: -2.5rem;
+      right: 1rem;
+      border-radius: 0 0 4rem 0rem;
+      box-shadow: 12px 12px 0px 8px var(--background);
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: transparent;
+      width: 2.5rem;
+      height: 2.5rem;
+      bottom: -2.5rem;
+      right: 1rem;
+      border-radius: 0 4rem 0 0rem;
+      box-shadow: 12px -12px 0px 8px var(--background);
+    }
+  }
+}
+
+/* home page */
+.theme-toggle {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset,
+    0px -3px 0px 0px rgba(255, 255, 255, 0.25) inset;
+}
+.input {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+/* loader */
+.loader-dots {
+  background-color: rgba(0, 0, 0, 0.568);
+  backdrop-filter: blur(5px);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  .dots-group {
+    display: flex;
+    gap: 1rem;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    .dot {
+      background-color: var(--primaryColor);
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      animation: bounce 0.5s infinite alternate;
+    }
+    .dot:nth-child(2) {
+      animation-delay: 100ms;
+    }
+    .dot:nth-child(3) {
+      animation-delay: 200ms;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+  }
+  100% {
+    translate: 0 -16px;
+  }
+}
+/* ===Classes Styles=== */
+
+/* ===Theme Color Palette=== */
+:root {
+  --background: #f8f8f8;
+  --foreground: #fff;
+  --textColor: #000;
+  --primaryColor: #98d90b;
+  --accentColor: #020873;
+  --grayColor: #e8e8e8;
+  --darkGrayColor: #2b2b2b;
+  --dangerColor: #f20505;
+}
+
+.dark {
+  --background: #222222;
+  --foreground: #2b2b2b;
+  --textColor: #ffffff;
+  --primaryColor: #98d90b;
+  --accentColor: #00b2db;
+  --grayColor: #1a1a1a;
+  --darkGrayColor: #e8e8e8;
+}
+/* ===Theme Color Palette=== */
+
+/* ===Button Hover State=== */
+.btnPrimary:hover {
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: #f20505;
+}
+
+/* ===Tailwind Directives=== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
