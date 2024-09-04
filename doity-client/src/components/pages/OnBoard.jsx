@@ -5,11 +5,10 @@ import toast from "react-hot-toast";
 
 const OnBoard = () => {
   const [searchParams] = useSearchParams();
-  //   const type = searchParams.get("type");
-  //   const token = searchParams.get("token_hash");
-  const { token_hash, type } = Object.fromEntries(
-    new URLSearchParams(window.location.search)
-  );
+    const type = searchParams.get("type");
+    const token_hash = searchParams.get("token_hash");
+
+
   const navigate = useNavigate();
 
   const verifyUser = async () => {
@@ -19,11 +18,13 @@ const OnBoard = () => {
         error,
       } = await supabase.auth.verifyOtp({ token_hash, type });
       if (error) {
-        toast.error("Something went wrong!");
+        // toast.error("Something went wrong!");
       }
       toast.success("Welcome");
+      navigate("/home");
+
     } catch (error) {
-      toast.error("Something went wrong!");
+      // toast.error("Something went wrong!");
     }
   };
 
@@ -31,8 +32,8 @@ const OnBoard = () => {
     const verify = async () => {
       const session = await verifyUser(token_hash, type);
       if (session) {
-        navigate("/home");
-        toast.success("welcome");
+        // navigate("/home");
+        // toast.success("welcome");
       }
     };
     verify();
