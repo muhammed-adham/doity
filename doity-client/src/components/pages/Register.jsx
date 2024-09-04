@@ -75,7 +75,7 @@ const Register = () => {
     const checkUser = async () => {
       const user = await supabase.auth.getUser();
       // console.log(user?.data?.user?.user_metadata?.full_name);
-      setUserName(user?.data?.user?.user_metadata?.full_name);
+      setUserName(user?.data?.user?.email);
     };
     checkUser();
   }, []);
@@ -120,7 +120,7 @@ const Register = () => {
                 type="fullName"
                 name="fullName"
                 id="fullName"
-                placeholder="full name.."
+                placeholder="Full name.."
                 className="bg-grayColor p-4 w-full input"
               />
               <input
@@ -140,7 +140,7 @@ const Register = () => {
                 type="password"
                 name="password"
                 id="password"
-                minLength={5}
+                minLength={6}
                 placeholder="Password.."
                 className="bg-grayColor p-4 w-full input"
               />

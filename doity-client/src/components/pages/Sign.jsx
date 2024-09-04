@@ -30,7 +30,7 @@ const Sign = () => {
         lightMode();
       }
     }
-  });
+  },[]);
   // theme mode handlers
   const darkMode = () => {
     document.querySelector("body").classList.add("dark");
@@ -62,25 +62,16 @@ const Sign = () => {
         email,
         password,
       });
-
       if (error) {
-        // Handle sign-up errors
-        console.error("Sign-up error:", error.message);
-        // Display an error message to the user
         toast.error(error.message);
         return;
       }
-
       // Sign-up was successful
       console.log("Sign-up successful:", data);
-      // Redirect the user to the desired page or show a success message
-      toast.success("Check your email.");
-      navigate("/verify");
+      toast.success("welcome");
+      navigate("/home");
     } catch (error) {
-      // Handle unexpected errors
-      console.error("Unexpected error:", error);
-      // Display a generic error message to the user
-      toast.error("An error occurred. Please try again later.");
+      toast.error("Please try again later.");
     }
   };
 
@@ -102,7 +93,7 @@ const Sign = () => {
     const checkUser = async () => {
       const user = await supabase.auth.getUser();
       // console.log(user?.data?.user?.user_metadata?.full_name);
-      setUserName(user?.data?.user?.user_metadata?.full_name);
+      setUserName(user?.data?.user?.email);
     };
     checkUser();
   }, []);
@@ -158,7 +149,7 @@ const Sign = () => {
                 type="password"
                 name="password"
                 id="password"
-                minLength={5}
+                minLength={6}
                 placeholder="Password.."
                 className="bg-grayColor p-4 w-full input"
               />

@@ -14,7 +14,7 @@ const Verify = () => {
         </div>
         <p>Confirm your identity by clicking the link we sent</p>
         <div
-          className="button flex justify-between h-16 w-80  hover:shadow-[0px_2px_4px_0px_rgba(0,_0,_0,_0.25)] items-center p-4 cursor-pointer bg-primaryColor text-textColor"
+          className="button flex justify-between h-16 w-80 border-white border-2 hover:border-4 shadow-[0px_2px_4px_0px_rgba(0,_0,_0,_0.25)] items-center p-4 cursor-pointer bg-GrayColor text-textColor"
           onClick={() =>
             (window.location.href =
               "https://mail.google.com/mail/u/0/#search/from%3A(supabase)+in%3Aanywhere")
@@ -26,7 +26,7 @@ const Verify = () => {
           <b>Open Gmail</b>
           <CiShare1 />
         </div>
-        <Link to={"/"}>Home Page</Link>
+        <Link  to={"/"}>Home Page</Link>
       </div>
     </>
   );

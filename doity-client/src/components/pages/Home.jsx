@@ -73,7 +73,7 @@ const Home = () => {
   useEffect(() => {
     const checkUser = async () => {
       const user = await supabase.auth.getUser();
-      setUserName(user?.data?.user?.user_metadata?.full_name);
+      setUserName(user?.data?.user?.email);
     };
     checkUser();
   }, []);
@@ -90,11 +90,10 @@ const Home = () => {
     setTaskData((prev) => e.target.value);
     setUpdateInputData({
       ...updateInputData,
-      task:e.target.value
-    })
+      task: e.target.value,
+    });
   };
 
-  // Fetching Data from supabase
   // add task
   const { mutate: addTask } = useMutation({
     mutationFn: () => {
@@ -119,25 +118,20 @@ const Home = () => {
       left: 0,
       behavior: "smooth",
     });
-    setTaskData(task)
-    setUpdateInputData({task,id});
+    setTaskData(task);
+    setUpdateInputData({ task, id });
     setUpdateState(true);
-    
   };
   // update task state
-     const taskState= async(done,id)=>{
-      await supabase
-      .from("tasks")
-      .update({ done })
-      .eq("id", id)
-      .select();
+  const taskState = async (done, id) => {
+    await supabase.from("tasks").update({ done }).eq("id", id).select();
   };
   // fetch update
   const { mutate: updateTask } = useMutation({
     mutationFn: () => {
-      const{task,id}=updateInputData
+      const { task, id } = updateInputData;
       if (task && id) {
-        toast.promise(updateRow(task,id), {
+        toast.promise(updateRow(task, id), {
           loading: "Updating...",
           success: <b>Task added successfully!</b>,
           error: <b>Could not save.</b>,
@@ -151,7 +145,6 @@ const Home = () => {
       }
       setUpdateState(false);
     },
-
   });
   //get tasks
   const { data: tasks, refetch } = useQuery({
@@ -172,6 +165,7 @@ const Home = () => {
       setAllTasks(tasks);
     }
   }, [tasks]);
+
   // Subscribe to changes
   useEffect(() => {
     supabase
@@ -267,9 +261,10 @@ const Home = () => {
                       className="hidden"
                       onChange={(event) => {
                         const isChecked = event.target.checked;
-                        taskState(isChecked,el.id);
+                        taskState(isChecked, el.id);
                         // Do something with the checked value here
                       }}
+                      checked={el.done ? true : false}
                     />
                     <div className="checkbox border-4 border-primaryColor  w-8 h-8 rounded-full"></div>
                     <label

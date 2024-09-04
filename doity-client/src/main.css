@@ -184,12 +184,24 @@ input[type="checkbox"]:checked + .checkbox::after {
     }
   }
 }
-
 @keyframes bounce {
   0% {
   }
   100% {
     translate: 0 -16px;
+  }
+}
+/* logo animation */
+.animation-logo{
+  animation: intro 2s infinite alternate;
+  transform-origin: center center;
+}
+@keyframes intro {
+  0% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 /* ===Classes Styles=== */
