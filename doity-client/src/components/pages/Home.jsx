@@ -125,6 +125,9 @@ const Home = () => {
   // update task state
   const taskState = async (done, id) => {
     await supabase.from("tasks").update({ done }).eq("id", id).select();
+    setAllTasks((prevTasks) =>
+      prevTasks.map((el) => (el.id === id ? { ...el, done } : el))
+    );
   };
   // fetch update
   const { mutate: updateTask } = useMutation({
