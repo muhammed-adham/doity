@@ -112,7 +112,7 @@ const Register = () => {
               className="flex flex-col items-center gap-4 py-6 px-4 bg-foreground shadow-md w-[24.375rem] "
               onSubmit={signUnHandler}
             >
-              <h2 className="opacity-20 ">sign in</h2>
+              <h2 className="opacity-20 ">sign up</h2>
               <input
                 onInput={onInputHandler}
                 onChange={onInputHandler}

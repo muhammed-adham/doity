@@ -64,6 +64,7 @@ export const deleteRow = async (id) => {
     console.error("Error deleting row:", error);
   }
 };
+
 // Subscribe
 // export const tasksSubscribe = supabase.channel('custom-all-channel')
 //   .on(

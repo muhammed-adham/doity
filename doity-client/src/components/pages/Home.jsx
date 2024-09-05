@@ -180,7 +180,7 @@ const Home = () => {
           const eventType = payload.eventType;
           const newRecord = payload.new.task;
           if (eventType) {
-            getTasks();
+            refetch() // Refetches the latest data based on the real-time event, avoiding unnecessary data retrieval.s
             toast(
               (t) => (
                 <span>

@@ -67,7 +67,7 @@ const Sign = () => {
         return;
       }
       // Sign-up was successful
-      console.log("Sign-up successful:", data);
+      // console.log("Sign-up successful:", data);
       toast.success("welcome");
       navigate("/home");
     } catch (error) {
